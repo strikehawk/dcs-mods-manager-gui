@@ -1,0 +1,17 @@
+<div class="container" fxLayout="column" fxLayoutAlign="start center">
+  <div class="formContainer" fxLayout="column" fxLayoutGap="20px">
+    <form [formGroup]="configurationForm">
+      <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+        <app-folder-picker formControlName="dcsUserFolder" label="DCS user folder"
+          [errors]="configurationForm?.controls.dcsUserFolder.errors"></app-folder-picker>
+        <app-folder-picker formControlName="modsFolder" label="Mods folder"
+          [errors]="configurationForm?.controls.modsFolder.errors"></app-folder-picker>
+      </div>
+    </form>
+
+    <div fxLayout="row" fxLayoutAlign="end center">
+      <button pButton label="Save" (click)="submit()"></button>
+    </div>
+  </div>
+
+</div>

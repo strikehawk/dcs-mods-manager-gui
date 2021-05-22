@@ -1,0 +1,11 @@
+<div class="p-field">
+  <label for="folder-picker">{{ label }}</label>
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+    <input id="folder-picker" type="text" aria-describedby="folder-picker-help" class="ng-dirty" pInputText
+      [ngClass]="{'ng-invalid': hasErrors}" [disabled]="disabled" fxFlex [value]="value"/>
+    <button class="button" pButton label="..." (click)="pickFolder()" [disabled]="disabled"></button>
+  </div>
+  <ng-container *ngIf="hasErrors">
+    <small id="folder-picker-help" class="p-error" *ngFor="let item of errors | keyvalue">{{ item.value }}</small>
+  </ng-container>
+</div>

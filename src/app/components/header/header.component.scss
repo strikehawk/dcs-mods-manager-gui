@@ -1,0 +1,19 @@
+.container {
+  padding: 8px;
+  background-color: black;
+}
+
+.menu {
+  color: white;
+  font-weight: bold;
+
+  a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

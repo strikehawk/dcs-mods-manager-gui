@@ -1,0 +1,25 @@
+<div class="container">
+  <p-table [value]="liveries">
+    <ng-template pTemplate="header">
+      <tr>
+        <th class="installed-col">Installed</th>
+        <th>Aircraft</th>
+        <th>Livery</th>
+        <th class="action-col"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-livery>
+      <tr>
+        <td class="installed-col" [class.installed]="livery.installed">
+          <i class="pi pi-check"></i>
+        </td>
+        <td>{{ livery.aircraft }}</td>
+        <td>{{ livery.name }}</td>
+        <td class="action-col">
+          <button pButton *ngIf="livery.installed" (click)="disable(livery.aircraft, livery.name)" label="Uninstall"></button>
+          <button pButton *ngIf="!livery.installed" (click)="enable(livery.aircraft, livery.name)" label="Install"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
