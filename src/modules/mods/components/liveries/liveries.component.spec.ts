@@ -8,9 +8,9 @@ describe('LiveriesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LiveriesComponent ]
+      declarations: [LiveriesComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

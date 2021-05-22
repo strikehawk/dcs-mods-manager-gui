@@ -23,7 +23,7 @@ export class LiveriesComponent implements OnInit {
     private modsService: ModsService
   ) { }
 
-  public async ngOnInit(): Promise<void> {
+  public ngOnInit(): void {
     this._getData();
   }
 

@@ -38,12 +38,12 @@ export class FolderPickerComponent implements OnInit, ControlValueAccessor {
   }
 
   public get hasErrors(): boolean {
-    return this._errors && Object.keys(this._errors).length > 0
+    return this._errors && Object.keys(this._errors).length > 0;
   }
 
   public disabled: boolean;
 
-  private _folder: string = "";
+  private _folder = "";
 
   public get value(): string {
     return this._folder;

@@ -8,9 +8,9 @@ describe('FolderPickerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FolderPickerComponent ]
+      declarations: [FolderPickerComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -8,9 +8,9 @@ describe('AircraftsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AircraftsComponent ]
+      declarations: [AircraftsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
