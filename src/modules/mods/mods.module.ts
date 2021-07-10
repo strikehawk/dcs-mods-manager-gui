@@ -6,11 +6,13 @@ import { ButtonModule } from 'primeng/button';
 
 import { AircraftsComponent } from './components/aircrafts/aircrafts.component';
 import { LiveriesComponent } from './components/liveries/liveries.component';
+import { TechModulesComponent } from './components/tech-modules/tech-modules.component';
 
 @NgModule({
   declarations: [
     AircraftsComponent,
-    LiveriesComponent
+    LiveriesComponent,
+    TechModulesComponent
   ],
   imports: [
     CommonModule,

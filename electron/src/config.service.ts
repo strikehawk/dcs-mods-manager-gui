@@ -46,8 +46,10 @@ export class ConfigService extends BaseService {
     const config: Configuration = Object.assign({
       dcsAircraftFolder: dcsUserFolder ? this.folderService.getDcsAircraftFolder(configFile.dcsUserFolder) : "",
       dcsLiveriesFolder: dcsUserFolder ? this.folderService.getDcsLiveriesFolder(configFile.dcsUserFolder) : "",
+      dcsTechFolder: dcsUserFolder ? this.folderService.getDcsTechFolder(configFile.dcsUserFolder) : "",
       modsAircraftFolder: modsFolder ? this.folderService.getModsAircraftFolder(configFile.modsFolder) : "",
-      modsLiveriesFolder: modsFolder ? this.folderService.getModsLiveriesFolder(configFile.modsFolder) : ""
+      modsLiveriesFolder: modsFolder ? this.folderService.getModsLiveriesFolder(configFile.modsFolder) : "",
+      modsTechFolder: modsFolder ? this.folderService.getModsTechFolder(configFile.modsFolder) : "",
     }, configFile);
 
     return config;

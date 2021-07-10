@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { AircraftsComponent } from './components/aircrafts/aircrafts.component';
 import { LiveriesComponent } from './components/liveries/liveries.component';
+import { TechModulesComponent } from './components/tech-modules/tech-modules.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: "mods/liveries",
     component: LiveriesComponent
+  },
+  {
+    path: "mods/tech-modules",
+    component: TechModulesComponent
   }
 ];
 

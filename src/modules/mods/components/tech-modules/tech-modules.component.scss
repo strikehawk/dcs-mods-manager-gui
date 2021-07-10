@@ -1,0 +1,30 @@
+.container {
+  padding: 8px;
+}
+
+::ng-deep {
+  .p-datatable .p-datatable-thead>tr>th,
+  .p-datatable .p-datatable-tbody>tr>td {
+    &.installed-col {
+      width: 130px;
+      text-align: center;
+    }
+
+    &.action-col {
+      width: 150px;
+
+      button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  .p-datatable .p-datatable-tbody>tr>td.installed-col {
+    color: rgb(54, 54, 54);
+
+    &.installed {
+      color: white;
+    }
+  }
+}

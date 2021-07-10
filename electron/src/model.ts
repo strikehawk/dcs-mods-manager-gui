@@ -20,6 +20,8 @@ export interface Configuration extends ConfigFile {
   modsFolderError?: string;
   dcsAircraftFolder: string;
   dcsLiveriesFolder: string;
+  dcsTechFolder: string;
   modsAircraftFolder: string;
   modsLiveriesFolder: string;
+  modsTechFolder: string;
 }

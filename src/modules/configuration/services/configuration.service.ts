@@ -23,9 +23,11 @@ export class ConfigurationService {
         dcsUserFolder: "",
         dcsAircraftFolder: "",
         dcsLiveriesFolder: "",
+        dcsTechFolder: "",
         modsFolder: "",
         modsAircraftFolder: "",
-        modsLiveriesFolder: ""
+        modsLiveriesFolder: "",
+        modsTechFolder: ""
       });
     }
 

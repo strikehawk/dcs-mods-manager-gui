@@ -3,8 +3,9 @@ import { AircraftLivery } from '../../../../electron/src/model';
 import { ElectronService } from '../../core/services/electron.service';
 
 import {
-  AVAILABLE_AIRCRAFTS, AVAILABLE_AIRCRAFT_LIVERIES, DISABLE_AIRCRAFT, DISABLE_AIRCRAFT_LIVERY, ENABLE_AIRCRAFT, ENABLE_AIRCRAFT_LIVERY,
-  INSTALLED_AIRCRAFTS, INSTALLED_AIRCRAFT_LIVERIES
+  AVAILABLE_AIRCRAFTS, AVAILABLE_AIRCRAFT_LIVERIES, AVAILABLE_TECH_MODULES, DISABLE_AIRCRAFT, DISABLE_AIRCRAFT_LIVERY, DISABLE_TECH_MODULE, ENABLE_AIRCRAFT, ENABLE_AIRCRAFT_LIVERY,
+  ENABLE_TECH_MODULE,
+  INSTALLED_AIRCRAFTS, INSTALLED_AIRCRAFT_LIVERIES, INSTALLED_TECH_MODULES
 } from '../../../../electron/src/channels';
 
 @Injectable({
@@ -24,14 +25,6 @@ export class ModsService {
     return this.electronService.getData(INSTALLED_AIRCRAFTS);
   }
 
-  public async getAvailableLiveries(): Promise<AircraftLivery[]> {
-    return this.electronService.getData(AVAILABLE_AIRCRAFT_LIVERIES);
-  }
-
-  public async getInstalledLiveries(): Promise<AircraftLivery[]> {
-    return this.electronService.getData(INSTALLED_AIRCRAFT_LIVERIES);
-  }
-
   public async enableAircraft(aircraft: string): Promise<void> {
     return this.electronService.getData(ENABLE_AIRCRAFT, aircraft);
   }
@@ -40,11 +33,36 @@ export class ModsService {
     return this.electronService.getData(DISABLE_AIRCRAFT, aircraft);
   }
 
+
+  public async getAvailableLiveries(): Promise<AircraftLivery[]> {
+    return this.electronService.getData(AVAILABLE_AIRCRAFT_LIVERIES);
+  }
+
+  public async getInstalledLiveries(): Promise<AircraftLivery[]> {
+    return this.electronService.getData(INSTALLED_AIRCRAFT_LIVERIES);
+  }
+
   public async enableAircraftLivery(aircraft: string, livery: string): Promise<void> {
     return this.electronService.getData(ENABLE_AIRCRAFT_LIVERY, aircraft, livery);
   }
 
   public async disableAircraftLivery(aircraft: string, livery: string): Promise<void> {
     return this.electronService.getData(DISABLE_AIRCRAFT_LIVERY, aircraft, livery);
+  }
+
+  public async getAvailableTechModules(): Promise<string[]> {
+    return this.electronService.getData(AVAILABLE_TECH_MODULES);
+  }
+
+  public async getInstalledTechModules(): Promise<string[]> {
+    return this.electronService.getData(INSTALLED_TECH_MODULES);
+  }
+
+  public async enableTechModule(module: string): Promise<void> {
+    return this.electronService.getData(ENABLE_TECH_MODULE, module);
+  }
+
+  public async disableTechModule(module: string): Promise<void> {
+    return this.electronService.getData(DISABLE_TECH_MODULE, module);
   }
 }
