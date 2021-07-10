@@ -24,10 +24,12 @@ export class ConfigurationService {
         dcsAircraftFolder: "",
         dcsLiveriesFolder: "",
         dcsTechFolder: "",
+        dcsAircraftKneeboardsFolder: "",
         modsFolder: "",
         modsAircraftFolder: "",
         modsLiveriesFolder: "",
-        modsTechFolder: ""
+        modsTechFolder: "",
+        modsAircraftKneeboardsFolder: "",
       });
     }
 

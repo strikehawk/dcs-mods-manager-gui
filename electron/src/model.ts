@@ -21,7 +21,9 @@ export interface Configuration extends ConfigFile {
   dcsAircraftFolder: string;
   dcsLiveriesFolder: string;
   dcsTechFolder: string;
+  dcsAircraftKneeboardsFolder: string;
   modsAircraftFolder: string;
   modsLiveriesFolder: string;
   modsTechFolder: string;
+  modsAircraftKneeboardsFolder: string;
 }

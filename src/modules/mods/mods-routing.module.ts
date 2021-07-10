@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AircraftsComponent } from './components/aircrafts/aircrafts.component';
 import { LiveriesComponent } from './components/liveries/liveries.component';
 import { TechModulesComponent } from './components/tech-modules/tech-modules.component';
+import { AircraftKneeboardsComponent } from './components/aircraft-kneeboards/aircraft-kneeboards.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: "mods/tech-modules",
     component: TechModulesComponent
+  },
+  {
+    path: "mods/aircraft-kneeboards",
+    component: AircraftKneeboardsComponent
   }
 ];
 

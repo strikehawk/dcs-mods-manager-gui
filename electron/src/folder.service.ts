@@ -48,6 +48,19 @@ export class FolderService {
   }
 
   /**
+  * Builds the full path to the DCS profile folder containing the aircraft kneeboards.
+  * @param {string} dcsUserFolder The full path to the DCS user folder.
+  * @returns {string} The full path to the DCS aircraft kneeboards folder.
+  */
+   public getDcsAircraftKneeboardsFolder(dcsUserFolder: string): string {
+    if (!dcsUserFolder) {
+      throw new Error("DCS user folder cannot be empty.");
+    }
+
+    return path.join(dcsUserFolder, "Kneeboard");
+  }
+
+  /**
   * Builds the full path to the folder containing the aircraft mods, based on the root Mods directory.
   * @param {string} modsFolder The full path to the root Mods folder.
   * @returns {string} The full path to the aircraft mods folder.
@@ -84,6 +97,19 @@ export class FolderService {
     }
 
     return path.join(modsFolder, "Tech");
+  }
+
+  /**
+  * Builds the full path to the folder containing the aircraft kneeboards, based on the root Mods directory.
+  * @param {string} modsFolder The full path to the root Mods folder.
+  * @returns {string} The full path to the aircraft kneeboards folder.
+  */
+   public getModsAircraftKneeboardsFolder(modsFolder: string): string {
+    if (!modsFolder) {
+      throw new Error("Root mods folder cannot be empty.");
+    }
+
+    return path.join(modsFolder, "Kneeboard");
   }
 
   public isDcsUserFolderValid(dcsUserFolder: string): any {
@@ -130,6 +156,7 @@ export class FolderService {
     fs.ensureDirSync(this.getDcsAircraftFolder(dcsUserFolder));
     fs.ensureDirSync(this.getDcsLiveriesFolder(dcsUserFolder));
     fs.ensureDirSync(this.getDcsTechFolder(dcsUserFolder));
+    fs.ensureDirSync(this.getDcsAircraftKneeboardsFolder(dcsUserFolder));
   }
 
   public checkModsFolderStructure(modsFolder: string): void {
@@ -144,5 +171,6 @@ export class FolderService {
     fs.ensureDirSync(this.getModsAircraftFolder(modsFolder));
     fs.ensureDirSync(this.getModsLiveriesFolder(modsFolder));
     fs.ensureDirSync(this.getModsTechFolder(modsFolder));
+    fs.ensureDirSync(this.getModsAircraftKneeboardsFolder(modsFolder));
   }
 }

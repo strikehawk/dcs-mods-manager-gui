@@ -5,9 +5,13 @@ import { BrowserWindow } from "electron";
 
 import { BaseService } from "./base.service";
 import { AircraftLivery } from "./model";
-import { AVAILABLE_AIRCRAFTS, AVAILABLE_AIRCRAFT_LIVERIES, AVAILABLE_TECH_MODULES, DISABLE_AIRCRAFT, DISABLE_AIRCRAFT_LIVERY, DISABLE_TECH_MODULE, ENABLE_AIRCRAFT, ENABLE_AIRCRAFT_LIVERY, ENABLE_TECH_MODULE, INSTALLED_AIRCRAFTS, INSTALLED_AIRCRAFT_LIVERIES, INSTALLED_TECH_MODULES } from "./channels";
+import {
+  AVAILABLE_AIRCRAFTS, AVAILABLE_AIRCRAFT_LIVERIES, AVAILABLE_TECH_MODULES, AVAILABLE_AIRCRAFT_KNEEBOARDS,
+  DISABLE_AIRCRAFT, DISABLE_AIRCRAFT_LIVERY, DISABLE_TECH_MODULE, DISABLE_AIRCRAFT_KNEEBOARDS,
+  ENABLE_AIRCRAFT, ENABLE_AIRCRAFT_LIVERY, ENABLE_TECH_MODULE, ENABLE_AIRCRAFT_KNEEBOARDS,
+  INSTALLED_AIRCRAFTS, INSTALLED_AIRCRAFT_LIVERIES, INSTALLED_TECH_MODULES, INSTALLED_AIRCRAFT_KNEEBOARDS
+} from "./channels";
 import { AppState } from "./app-state";
-import { utils } from "mocha";
 
 export class ModsService extends BaseService {
   public win: BrowserWindow;
@@ -33,6 +37,11 @@ export class ModsService extends BaseService {
     this._setupMessage(INSTALLED_TECH_MODULES, this._getInstalledTechModules.bind(this));
     this._setupMessage(ENABLE_TECH_MODULE, this._enableTechModule.bind(this));
     this._setupMessage(DISABLE_TECH_MODULE, this._disableTechModule.bind(this));
+
+    this._setupMessage(AVAILABLE_AIRCRAFT_KNEEBOARDS, this._getAvailableAircraftKneeboards.bind(this));
+    this._setupMessage(INSTALLED_AIRCRAFT_KNEEBOARDS, this._getInstalledAircraftKneeboards.bind(this));
+    this._setupMessage(ENABLE_AIRCRAFT_KNEEBOARDS, this._enableAircraftKneeboard.bind(this));
+    this._setupMessage(DISABLE_AIRCRAFT_KNEEBOARDS, this._disableAircraftKneeboard.bind(this));
   }
 
   private async _getAvailableAircrafts(): Promise<string[]> {
@@ -257,6 +266,77 @@ export class ModsService extends BaseService {
     } catch (error) {
       console.error(error);
       throw new Error("Could not unlink the tech module.");
+    }
+  }
+
+  private async _getAvailableAircraftKneeboards(): Promise<string[]> {
+    const parentFolder = this.appState.config.modsAircraftKneeboardsFolder;
+
+    const items: string[] = [];
+
+    let aircraftFolder: string;
+    let itemFsStats: fs.Stats;
+    for (let folder of await fs.readdir(parentFolder)) {
+      aircraftFolder = path.join(parentFolder, folder);
+      itemFsStats = fs.lstatSync(aircraftFolder);
+      if (!itemFsStats.isDirectory() && !itemFsStats.isSymbolicLink()) {
+        continue;
+      }
+
+      items.push(folder);
+    }
+
+    return items;
+  }
+
+  private async _getInstalledAircraftKneeboards(): Promise<string[]> {
+    const parentFolder = this.appState.config.dcsAircraftKneeboardsFolder;
+
+    const items: string[] = [];
+
+    let aircraftFolder: string;
+    let itemFsStats: fs.Stats;
+    for (let folder of await fs.readdir(parentFolder)) {
+      aircraftFolder = path.join(parentFolder, folder);
+      itemFsStats = fs.lstatSync(aircraftFolder);
+      if (!itemFsStats.isDirectory() && !itemFsStats.isSymbolicLink()) {
+        continue;
+      }
+
+      items.push(folder);
+    }
+
+    return items;
+  }
+
+  private async _enableAircraftKneeboard(aircraft: string): Promise<void> {
+    if (!aircraft) {
+      throw new Error("Aircraft name cannot be empty.");
+    }
+
+    const aircraftFolder = path.join(this.appState.config.modsAircraftKneeboardsFolder, aircraft);
+    const symlinkFolder = path.join(this.appState.config.dcsAircraftKneeboardsFolder, aircraft);
+
+    try {
+      await fs.createSymlink(aircraftFolder, symlinkFolder, "dir");
+    } catch (error) {
+      console.error(error);
+      throw new Error("Could not link the aircraft livery.");
+    }
+  }
+
+  private async _disableAircraftKneeboard(aircraft: string): Promise<void> {
+    if (!aircraft) {
+      throw new Error("Aircraft name cannot be empty.");
+    }
+
+    const symlinkFolder = path.join(this.appState.config.dcsAircraftKneeboardsFolder, aircraft);
+
+    try {
+      await fs.remove(symlinkFolder);
+    } catch (error) {
+      console.error(error);
+      throw new Error("Could not unlink the aircraft kneeboard.");
     }
   }
 }

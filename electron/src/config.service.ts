@@ -47,9 +47,11 @@ export class ConfigService extends BaseService {
       dcsAircraftFolder: dcsUserFolder ? this.folderService.getDcsAircraftFolder(configFile.dcsUserFolder) : "",
       dcsLiveriesFolder: dcsUserFolder ? this.folderService.getDcsLiveriesFolder(configFile.dcsUserFolder) : "",
       dcsTechFolder: dcsUserFolder ? this.folderService.getDcsTechFolder(configFile.dcsUserFolder) : "",
+      dcsAircraftKneeboardsFolder: dcsUserFolder ? this.folderService.getModsAircraftKneeboardsFolder(configFile.dcsUserFolder) : "",
       modsAircraftFolder: modsFolder ? this.folderService.getModsAircraftFolder(configFile.modsFolder) : "",
       modsLiveriesFolder: modsFolder ? this.folderService.getModsLiveriesFolder(configFile.modsFolder) : "",
       modsTechFolder: modsFolder ? this.folderService.getModsTechFolder(configFile.modsFolder) : "",
+      modsAircraftKneeboardsFolder: modsFolder ? this.folderService.getModsAircraftKneeboardsFolder(configFile.modsFolder) : "",
     }, configFile);
 
     return config;

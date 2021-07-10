@@ -18,3 +18,8 @@ export const AVAILABLE_TECH_MODULES = "getAvailableTechModules";
 export const INSTALLED_TECH_MODULES = "getInstalledTechModules";
 export const ENABLE_TECH_MODULE = "enableTechModule";
 export const DISABLE_TECH_MODULE = "disableTechModule";
+
+export const AVAILABLE_AIRCRAFT_KNEEBOARDS = "getAvailableAircraftKneeboards";
+export const INSTALLED_AIRCRAFT_KNEEBOARDS = "getInstalledAircraftKneeboards";
+export const ENABLE_AIRCRAFT_KNEEBOARDS = "enableAircraftKneeboards";
+export const DISABLE_AIRCRAFT_KNEEBOARDS = "disableAircraftKneeboards";
