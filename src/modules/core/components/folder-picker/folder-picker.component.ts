@@ -49,8 +49,8 @@ export class FolderPickerComponent implements OnInit, ControlValueAccessor {
     return this._folder;
   }
 
-  public onChange = (folder: string) => { };
-  public onTouch = () => { };
+  public onChange: (folder: string) => void = (folder: string) => { };
+  public onTouch: () => void = () => { };
 
   constructor(
     private cdr: ChangeDetectorRef,
